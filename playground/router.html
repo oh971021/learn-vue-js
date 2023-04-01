@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <!-- Vue, Vue Router Script 순서도 중요! -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script>
+    <script>
+        // 아래 Vue Instance와 연결 하는 라우터
+        var Router = new VueRouter({
+
+        });
+
+        new Vue({
+            el: '#app',
+            router: Router  // 위에서 정의한 Router Instance을 Vue Instance에 있는 router option에 대입
+        });
+    </script>
+</body>
+</html>

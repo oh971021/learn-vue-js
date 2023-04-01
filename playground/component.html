@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <app-header></app-header>
+        <app-footer></app-footer>
+    </div>
+
+    <div id="app2">
+        <app-header></app-header>
+        <app-footer></app-footer>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+
+        /*
+        지역 컴포넌트와 전역 컴포넌트의 차이
+        1. 지역 컴포넌트
+            : 싱글페이지 컴포넌트 형식으로 생성 시 구성방식을 확인하기 쉬움
+            : 주로 지역 컴포넌트를 많이 사용함
+        2. 전역 컴포넌트
+            : 플러그인 혹은 라이브러리의 경우에서만 사용할 때가 많음
+        */
+
+        // Vue.component('컴포넌트 이름', '컴포넌트 내용');
+        // 전역 Component 생성
+        Vue.component('app-header', {
+            template: '<h1>Header</h1>'
+        });
+
+        // 인스턴스 생성은 Root 컴포넌트가 된다.
+        new Vue({
+            el: '#app', // DOM ID
+            components: { // 지역 Component 생성
+                // 'key': 'value' 키 값 쌍으로 생성
+                'app-footer': {
+                    template: '<footer>footer</footer>'
+                }
+            }
+        });
+
+        new Vue({
+            el: '#app2',
+            components: {
+                'app-footer': {
+                    template: '<footer>footer</footer>'
+                }
+            }
+        });
+    </script>
+</body>
+</html>
