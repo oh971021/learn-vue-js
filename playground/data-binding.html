@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<!-- Vue Instanse에서 관리되는 ID의 값을 Binding -->
+		<p v-bind:id="uuid" v-bind:class="name">{{ num }}</p>
+		<p>{{ doubleNum }}</p>
+		<div v-if="loading"> <!-- DOM을 완전히 삭제 -->
+			Loading...
+		</div>
+		<div v-else>
+			Test user has been logged in
+		</div>
+		<div v-show="loading"> <!-- CSS에서 Display none 으로 수정 -->
+			Loading...
+		</div>
+
+		<br>
+		<!-- TODO: Input Box 를 만들고, 입력된 값을 P 태그에 출력해보기 -->
+		<input v-model="message" placeholder="edit me" />		
+		<p>{{ message }}</p>
+	</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el: '#app', // 객체명
+			data: {
+				num: 10,
+				uuid: 'abc1234', // ID를 속성으로 관리하기 위함
+				name: 'text-blue',
+				loading: true, 
+				message: ''
+			},
+			computed: { // 파생 속성 (산식)
+				doubleNum: function() {
+					return this.num * 2 // Data > Num을 가르킴
+				}
+			}
+		});
+	</script>
+</body>
+</html>
